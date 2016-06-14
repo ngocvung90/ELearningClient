@@ -2,6 +2,10 @@ ElearningClient.Droid.MainActivity, ElearningClient.Droid;md5ea09b8446713b589f27
 ElearningClient.Droid.MainActivity, ElearningClient.Droid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5ea09b8446713b589f2719225a4b62d0e.MainActivity
 ElearningClient.Droid.MainActivity;md5ea09b8446713b589f2719225a4b62d0e.MainActivity
 elearningclient.droid.MainActivity;md5ea09b8446713b589f2719225a4b62d0e.MainActivity
+ImageCircle.Forms.Plugin.Droid.ImageCircleRenderer, ImageCircle.Forms.Plugin.Android;md5067359d4f110e922b1227d8811289749.ImageCircleRenderer
+ImageCircle.Forms.Plugin.Droid.ImageCircleRenderer, ImageCircle.Forms.Plugin.Android, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null;md5067359d4f110e922b1227d8811289749.ImageCircleRenderer
+ImageCircle.Forms.Plugin.Droid.ImageCircleRenderer;md5067359d4f110e922b1227d8811289749.ImageCircleRenderer
+imagecircle.forms.plugin.droid.ImageCircleRenderer;md5067359d4f110e922b1227d8811289749.ImageCircleRenderer
 Android.Support.Design.Widget.Snackbar/SnackbarActionClickImplementor, Xamarin.Android.Support.Design;android.support.design.widget.Snackbar_SnackbarActionClickImplementor
 Android.Support.Design.Widget.Snackbar+SnackbarActionClickImplementor, Xamarin.Android.Support.Design, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;android.support.design.widget.Snackbar_SnackbarActionClickImplementor
 Android.Support.Design.Widget.Snackbar.SnackbarActionClickImplementor;android.support.design.widget.Snackbar_SnackbarActionClickImplementor

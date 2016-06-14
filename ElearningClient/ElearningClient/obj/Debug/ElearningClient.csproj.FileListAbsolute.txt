@@ -8,5 +8,11 @@ E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\bin\Debug
 E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\obj\Debug\ElearningClient.csprojResolveAssemblyReference.cache
 E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\obj\Debug\ElearningClient.dll
 E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\obj\Debug\ElearningClient.pdb
+E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\bin\Debug\ImageCircle.Forms.Plugin.Abstractions.dll
+E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\bin\Debug\ImageCircle.Forms.Plugin.Abstractions.pdb
+E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\bin\Debug\ImageCircle.Forms.Plugin.Abstractions.xml
+E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\obj\Debug\ElearningClient.View.MainView.xaml.g.cs
+E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\obj\Debug\ElearningClient.View.MainViewMaster.xaml.g.cs
+E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\obj\Debug\ElearningClient.View.MainViewDetail.xaml.g.cs
 E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\obj\Debug\ElearningClient.dll.mdb
 E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\bin\Debug\ElearningClient.dll.mdb

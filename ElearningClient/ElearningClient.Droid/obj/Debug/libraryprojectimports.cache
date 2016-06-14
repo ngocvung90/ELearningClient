@@ -2,15 +2,18 @@
 <Paths>
   <Jars></Jars>
   <ResolvedResourceDirectories>
+    <ResolvedResourceDirectory>E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\__library_projects__\ImageCircle.Forms.Plugin.Android\library_project_imports\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\__library_projects__\Xamarin.Forms.Platform.Android\library_project_imports\res</ResolvedResourceDirectory>
     <ResolvedResourceDirectory>E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\__library_projects__\Xamarin.Forms.Platform\library_project_imports\res</ResolvedResourceDirectory>
   </ResolvedResourceDirectories>
   <ResolvedAssetDirectories>
+    <ResolvedAssetDirectory>E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\__library_projects__\ImageCircle.Forms.Plugin.Android\library_project_imports\assets</ResolvedAssetDirectory>
     <ResolvedAssetDirectory>E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\__library_projects__\Xamarin.Forms.Platform.Android\library_project_imports\assets</ResolvedAssetDirectory>
     <ResolvedAssetDirectory>E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\__library_projects__\Xamarin.Forms.Platform\library_project_imports\assets</ResolvedAssetDirectory>
   </ResolvedAssetDirectories>
   <ResolvedEnvironmentFiles />
   <ResolvedResourceDirectoryStamps>
+    <ResolvedResourceDirectoryStamp>E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\__library_projects__\ImageCircle.Forms.Plugin.Android.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\__library_projects__\Xamarin.Forms.Platform.Android.stamp</ResolvedResourceDirectoryStamp>
     <ResolvedResourceDirectoryStamp>E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\__library_projects__\Xamarin.Forms.Platform.stamp</ResolvedResourceDirectoryStamp>
   </ResolvedResourceDirectoryStamps>

@@ -1,7 +1,7 @@
 <XamlCompilerSaveState>
   <ReferenceAssemblyList>
-    <LocalAssembly PathName="e:\vung\xamarin\github\elearningclient\elearningclient\elearningclient.winphone\obj\debug\intermediatexaml\elearningclient.winphone.exe" HashGuid="a086e81c-14c0-4dbb-c4b3-9030cdd80126" />
-    <ReferenceAssembly PathName="e:\vung\xamarin\github\elearningclient\elearningclient\elearningclient\bin\debug\elearningclient.dll" HashGuid="a29d1fab-9173-ad10-9f95-61515efb3e95" />
+    <LocalAssembly PathName="e:\vung\xamarin\github\elearningclient\elearningclient\elearningclient.winphone\obj\debug\intermediatexaml\elearningclient.winphone.exe" HashGuid="f841986e-0db5-769f-5f9d-8fea11b7069c" />
+    <ReferenceAssembly PathName="e:\vung\xamarin\github\elearningclient\elearningclient\elearningclient\bin\debug\elearningclient.dll" HashGuid="c10bb078-1559-e8e3-c8c3-6e283ca25b3a" />
     <ReferenceAssembly PathName="e:\vung\xamarin\github\elearningclient\packages\xamarin.forms.2.0.0.6482\lib\wpa81\xamarin.forms.core.dll" HashGuid="c8a30eb8-5ae8-352d-b94f-7c913a7557ba" />
     <ReferenceAssembly PathName="e:\vung\xamarin\github\elearningclient\packages\xamarin.forms.2.0.0.6482\lib\wpa81\xamarin.forms.platform.dll" HashGuid="d9389e38-8a39-bed5-406b-7a34fe4704ea" />
     <ReferenceAssembly PathName="e:\vung\xamarin\github\elearningclient\packages\xamarin.forms.2.0.0.6482\lib\wpa81\xamarin.forms.platform.winrt.dll" HashGuid="dbd728c2-e21b-4125-2be0-f7931b605baa" />
