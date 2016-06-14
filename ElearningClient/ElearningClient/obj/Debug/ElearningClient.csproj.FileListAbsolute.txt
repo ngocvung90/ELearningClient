@@ -1,0 +1,12 @@
+E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\bin\Debug\ElearningClient.dll
+E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\bin\Debug\ElearningClient.pdb
+E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\bin\Debug\Xamarin.Forms.Core.dll
+E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\bin\Debug\Xamarin.Forms.Platform.dll
+E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\bin\Debug\Xamarin.Forms.Xaml.dll
+E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\bin\Debug\Xamarin.Forms.Core.xml
+E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\bin\Debug\Xamarin.Forms.Xaml.xml
+E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\obj\Debug\ElearningClient.csprojResolveAssemblyReference.cache
+E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\obj\Debug\ElearningClient.dll
+E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\obj\Debug\ElearningClient.pdb
+E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\obj\Debug\ElearningClient.dll.mdb
+E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\bin\Debug\ElearningClient.dll.mdb
