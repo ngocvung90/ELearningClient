@@ -622,4 +622,3 @@ namespace ElearningClient.WinPhone.ElearningClient_WinPhone_XamlTypeInfo
 }
 
 
-

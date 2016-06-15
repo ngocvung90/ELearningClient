@@ -8,5 +8,19 @@ namespace ElearningClient.Model
 {
     class MainViewModel : ViewModelBase
     {
+        public MainViewModel()
+        {
+            MainText = "This is Elearning !";
+        }
+        private string mainText = "";
+        public string MainText
+        {
+            get { return mainText; }
+            set
+            {
+                mainText = value;
+                OnPropertyChanged("MainText");
+            }
+        }
     }
 }
