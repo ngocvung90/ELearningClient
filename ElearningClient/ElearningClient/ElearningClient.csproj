@@ -39,6 +39,7 @@
     <Compile Include="Model\MainViewModel.cs" />
     <Compile Include="Model\ViewModelBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\AppStyle.cs" />
     <Compile Include="View\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
@@ -48,6 +49,12 @@
     <Compile Include="View\MainViewMaster.xaml.cs">
       <DependentUpon>MainViewMaster.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\SettingsPage.cs" />
+    <Compile Include="View\SettingsSwitchView.cs" />
+    <Compile Include="View\SettingsUserView.cs" />
+    <Compile Include="View\StatusBarView.cs" />
+    <Compile Include="View\SyncSliderView.cs" />
+    <Compile Include="View\SyncView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="ImageCircle.Forms.Plugin.Abstractions">

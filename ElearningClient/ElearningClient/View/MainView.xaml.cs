@@ -14,39 +14,9 @@ namespace ElearningClient.View
         MainViewModel _vm;
         public MainView()
         {
-           // InitializeComponent();
+            InitializeComponent();
             _vm = new MainViewModel();
             BindingContext = _vm;
-            Title = "Jobs";
-            Master = new ContentPage
-            {
-                Content = new StackLayout
-                {
-                    VerticalOptions = LayoutOptions.Center,
-                    Children = {
-                        new Label {
-                            HorizontalTextAlignment = TextAlignment.Center,
-                            Text = "Welcome to Xamarin Forms!"
-                        }
-                    }
-                }
-            };
-            Master.Title = "Jobs2";
-
-            Detail = new ContentPage
-            {
-                Content = new StackLayout
-                {
-                    VerticalOptions = LayoutOptions.Center,
-                    Children = {
-                        new Label {
-                            HorizontalTextAlignment = TextAlignment.Center,
-                            Text = "Welcome to Xamarin Forms 2!"
-                        }
-                    }
-                }
-            };
-
         }
     }
 }
