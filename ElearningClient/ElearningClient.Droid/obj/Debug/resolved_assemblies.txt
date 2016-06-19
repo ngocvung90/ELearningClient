@@ -23,11 +23,12 @@ E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj
 E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\android\assets\System.ComponentModel.Composition.dll
 E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\android\assets\System.Resources.ResourceManager.dll
 E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\android\assets\System.Diagnostics.Tools.dll
-E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\android\assets\System.ObjectModel.dll
 E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\android\assets\System.Diagnostics.Debug.dll
+E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\android\assets\System.ObjectModel.dll
 E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\android\assets\System.Linq.Expressions.dll
-E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\android\assets\System.Reflection.dll
 E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\android\assets\System.Threading.dll
+E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\android\assets\System.Runtime.Extensions.dll
+E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\android\assets\System.Reflection.dll
 E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\android\assets\System.Collections.dll
 E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\android\assets\System.Threading.Tasks.dll
 E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\android\assets\System.Globalization.dll
@@ -35,7 +36,6 @@ E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj
 E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\android\assets\System.Xml.ReaderWriter.dll
 E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\android\assets\System.Dynamic.Runtime.dll
 E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\android\assets\System.IO.dll
-E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\android\assets\System.Runtime.Extensions.dll
 E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\android\assets\System.Linq.dll
 E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\android\assets\System.Reflection.Extensions.dll
 E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.Droid\obj\Debug\android\assets\System.Net.Http.dll

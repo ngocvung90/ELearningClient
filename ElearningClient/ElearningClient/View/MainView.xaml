@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:ElearningClient.View"
              x:Class="ElearningClient.View.MainView">
   <MasterDetailPage.Master>
-    <local:SettingsPage/>
+    <local:MainViewMaster/>
   </MasterDetailPage.Master>
   <MasterDetailPage.Detail>
     <ContentPage Title = "Test">

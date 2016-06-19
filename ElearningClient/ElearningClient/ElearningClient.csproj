@@ -35,7 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="App.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\MainViewModel.cs" />
     <Compile Include="Model\ViewModelBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -51,7 +53,9 @@
     </Compile>
     <Compile Include="View\SettingsPage.cs" />
     <Compile Include="View\SettingsSwitchView.cs" />
-    <Compile Include="View\SettingsUserView.cs" />
+    <Compile Include="View\SettingUserView.xaml.cs">
+      <DependentUpon>SettingUserView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\StatusBarView.cs" />
     <Compile Include="View\SyncSliderView.cs" />
     <Compile Include="View\SyncView.cs" />
@@ -94,6 +98,18 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="View\MainViewDetail.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="App.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="View\SettingUserView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

@@ -14,5 +14,7 @@ E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\bin\Debug
 E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\obj\Debug\ElearningClient.View.MainView.xaml.g.cs
 E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\obj\Debug\ElearningClient.View.MainViewMaster.xaml.g.cs
 E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\obj\Debug\ElearningClient.View.MainViewDetail.xaml.g.cs
+E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\obj\Debug\ElearningClient.App.xaml.g.cs
+E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\obj\Debug\ElearningClient.View.SettingUserView.xaml.g.cs
 E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\obj\Debug\ElearningClient.dll.mdb
 E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\bin\Debug\ElearningClient.dll.mdb

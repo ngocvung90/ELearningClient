@@ -8,11 +8,12 @@ using Xamarin.Forms;
 
 namespace ElearningClient.View
 {
-    public partial class MainViewMaster : NavigationPage
+    public partial class MainViewMaster : ContentPage
     {
         public MainViewMaster()
         {
             InitializeComponent();
+            //Style = AppStyle.SettingsPageStyle;
         }
     }
 }

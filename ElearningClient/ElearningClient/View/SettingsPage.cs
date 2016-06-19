@@ -34,7 +34,7 @@ namespace ElearningClient.View
 						HeightRequest = 1,
 						BackgroundColor = AppStyle.DarkLabelColor,
 					},
-					new SettingsUserView(),
+					//new SettingsUserView(),
 					new SyncView (),
 					new SettingsSwitchView ("GPS"),
 					new SettingsSwitchView ("Jobs Alert"),

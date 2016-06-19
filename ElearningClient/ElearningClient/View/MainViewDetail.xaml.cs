@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace ElearningClient.View
 {
-    public partial class MainViewDetail : ContentPage
+    public partial class MainViewDetail : NavigationPage
     {
         public MainViewDetail()
         {
