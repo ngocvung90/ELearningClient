@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             x:Class="ElearningClient.App">
+  <Application.Resources>
+    <ResourceDictionary x:Key="sss">
+      <!--Label Style-->
+      <Style TargetType="Label" x:Key="PageTitleLabelStyle">
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="TextColor" Value="#D5D5D5"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+      </Style>
+      <Style TargetType="Page" x:Key="SettingsPageStyle">
+        <Setter Property="BackgroundColor" Value="#464646"/>
+        <Setter Property="Title" Value="Settings"/>
+      </Style>
+      <!--Circle image style-->
+      <Style TargetType="controls:CircleImage" x:Key="circleImageStyle">
+        <Setter Property="BorderColor" Value="#F2995D"/>
+        <Setter Property="HeightRequest" Value="50"/>
+        <Setter Property="WidthRequest" Value="50"/>
+        <Setter Property="Aspect" Value="AspectFill"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="BorderThickness" Value="2"/>
+      </Style>
+      <!--NavigationPage Style-->
+      <Style TargetType="NavigationPage" x:Key="NavigationPageStyle">
+        <Setter Property="BarTextColor" Value="White"/>
+        <Setter Property="BarBackgroundColor" Value="#F2995D"/>
+      </Style>
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>
