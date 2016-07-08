@@ -17,6 +17,7 @@ namespace ElearningClient.View
             InitializeComponent();
             _vm = new MainViewModel();
             BindingContext = _vm;
+            //pdfWebView.Source = "https://www.google.com.vn";
         }
     }
 }

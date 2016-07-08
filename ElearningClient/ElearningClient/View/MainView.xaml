@@ -7,9 +7,6 @@
     <local:MainViewMaster/>
   </MasterDetailPage.Master>
   <MasterDetailPage.Detail>
-    <ContentPage Title = "Test">
-      <StackLayout>
-      </StackLayout>
-    </ContentPage>
+    <local:MainViewDetail/>
   </MasterDetailPage.Detail>
 </MasterDetailPage>
