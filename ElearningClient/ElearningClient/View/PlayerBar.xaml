@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Frame xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Padding="0, 0, 0 ,0"
+             x:Class="ElearningClient.View.PlayerBar">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="20"/>
+      <RowDefinition Height="40"/>
+    </Grid.RowDefinitions>
+    <!--Playing time , seekbar, total time-->
+    <Grid Grid.Row="0" VerticalOptions="Start">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="40"/>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="40"/>
+      </Grid.ColumnDefinitions>
+      <Label Grid.Column="0" Text="00:00" TextColor="#AA00FF" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center"/>
+      <SearchBar Grid.Column="1"/>
+      <Label Grid.Column="2" Text="20:50" TextColor="#AA00FF" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center"/>
+    </Grid>
+    <!--previous, play/pause, next-->
+    <Grid Grid.Row="1">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="40"/>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="40"/>
+      </Grid.ColumnDefinitions>
+      <StackLayout Grid.Column="1" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+        <Image x:Name="imgPrev" Source="prevx64.png">
+          <Image.GestureRecognizers>
+             <TapGestureRecognizer
+                Tapped="OnimgPrevTapped"
+                NumberOfTapsRequired="1" />
+            </Image.GestureRecognizers>
+        </Image>
+        <Frame  Padding="1, 1, 1, 1" BackgroundColor="#AA00FF"/>
+        <Image x:Name="imgPlay" Source="playx64.png" ></Image> 
+        <Frame   Padding="1, 1, 1, 1" BackgroundColor="#AA00FF"/>
+        <Image x:Name="imgNext" Source="nextx64.png" >
+          <Image.GestureRecognizers>
+             <TapGestureRecognizer
+                Tapped="OnimgNextTapped"
+                NumberOfTapsRequired="1" />
+            </Image.GestureRecognizers>
+        </Image> 
+      </StackLayout>
+    </Grid>
+  </Grid>
+</Frame>

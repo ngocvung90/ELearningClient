@@ -1,2 +1,0 @@
-E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient.WinPhone\ElearningClient.WinPhone.csproj;neutral
-E:\Vung\xamarin\Github\ElearningClient\ElearningClient\ElearningClient\ElearningClient.csproj;neutral

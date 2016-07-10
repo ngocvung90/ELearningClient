@@ -1,4 +1,4 @@
-﻿using ElearningClient.Model;
+﻿using ElearningClient.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

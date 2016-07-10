@@ -38,10 +38,14 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\MainViewModel.cs" />
-    <Compile Include="Model\ViewModelBase.cs" />
+    <Compile Include="ViewModel\MainViewDetailVM.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\ViewModelHost.cs" />
     <Compile Include="View\AppStyle.cs" />
+    <Compile Include="View\CustomWebView.cs" />
     <Compile Include="View\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
@@ -50,6 +54,9 @@
     </Compile>
     <Compile Include="View\MainViewMaster.xaml.cs">
       <DependentUpon>MainViewMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PlayerBar.xaml.cs">
+      <DependentUpon>PlayerBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SettingsPage.cs" />
     <Compile Include="View\SettingsSwitchView.cs" />
@@ -83,7 +90,7 @@
     <None Include="pdfviewer\data.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ViewModel\" />
+    <Folder Include="Model\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="View\MainView.xaml">
@@ -116,6 +123,25 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ImageResource\delete.png" />
+    <EmbeddedResource Include="ImageResource\download.png" />
+    <EmbeddedResource Include="ImageResource\icon_big.png" />
+    <EmbeddedResource Include="ImageResource\icon_small.png" />
+    <EmbeddedResource Include="ImageResource\music_big.png" />
+    <EmbeddedResource Include="ImageResource\music_small.png" />
+    <EmbeddedResource Include="ImageResource\next.png" />
+    <EmbeddedResource Include="ImageResource\pause.png" />
+    <EmbeddedResource Include="ImageResource\play.png" />
+    <EmbeddedResource Include="ImageResource\prev.png" />
+    <EmbeddedResource Include="ImageResource\settings.png" />
+    <AndroidResource Include="ImageResource\deletex64.png" />
+    <AndroidResource Include="ImageResource\downloadx64.png" />
+    <AndroidResource Include="ImageResource\nextx64.png" />
+    <AndroidResource Include="ImageResource\pausex64.png" />
+    <Content Include="ImageResource\playx64.png" />
+    <AndroidResource Include="ImageResource\prevx64.png" />
+    <AndroidResource Include="ImageResource\settingsx64.png" />
+    <Content Include="Lib\XLabs.Forms.dll" />
     <Content Include="pdfviewer\compatibility.js" />
     <Content Include="pdfviewer\customview.js" />
     <EmbeddedResource Include="pdfviewer\index.html" />
@@ -123,6 +149,12 @@
     <Content Include="pdfviewer\pdf.js" />
     <Content Include="pdfviewer\pdf.worker.js" />
     <Content Include="pdfviewer\pdffile.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="View\PlayerBar.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.0.0.6482\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.0.0.6482\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

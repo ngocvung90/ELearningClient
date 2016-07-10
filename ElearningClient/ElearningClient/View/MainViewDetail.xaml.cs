@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ElearningClient.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,9 +16,15 @@ namespace ElearningClient.View
         public MainViewDetail()
         {
             InitializeComponent();
-            pdfWebView.Source = LoadHTMLFileFromResource();
+           
+            BindingContext = ViewModelHost.AfxGetViewModelHost().GetDetailViewModel(this); ;
+           // pdfWebView.Source = LoadHTMLFileFromResource();
         }
 
+        public WebView GetPdfWebView()
+        {
+            return pdfWebView;
+        }
         private HtmlWebViewSource LoadHTMLFileFromResource()
         {
 

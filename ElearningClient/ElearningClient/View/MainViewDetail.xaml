@@ -4,7 +4,12 @@
                 xmlns:local="clr-namespace:ElearningClient.View"
                 Style="{StaticResource SettingsPageStyle}"
              x:Class="ElearningClient.View.MainViewDetail">
-  <StackLayout VerticalOptions="FillAndExpand" Padding="20">
-    <WebView x:Name ="pdfWebView" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
-  </StackLayout>
+  <Grid BackgroundColor="White">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="60"/>
+    </Grid.RowDefinitions>
+    <local:CustomWebView x:Name ="pdfWebView" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" BackgroundColor="Purple" />
+    <local:PlayerBar x:Name="playerBar" Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+  </Grid>
 </ContentPage>

@@ -121,7 +121,18 @@
     <None Include="Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Assets\delete.png" />
+    <EmbeddedResource Include="Assets\download.png" />
+    <EmbeddedResource Include="Assets\icon_big.png" />
+    <EmbeddedResource Include="Assets\icon_small.png" />
     <Content Include="Assets\Logo.scale-100.png" />
+    <EmbeddedResource Include="Assets\music_big.png" />
+    <EmbeddedResource Include="Assets\music_small.png" />
+    <EmbeddedResource Include="Assets\next.png" />
+    <EmbeddedResource Include="Assets\pause.png" />
+    <EmbeddedResource Include="Assets\play.png" />
+    <EmbeddedResource Include="Assets\prev.png" />
+    <EmbeddedResource Include="Assets\settings.png" />
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
