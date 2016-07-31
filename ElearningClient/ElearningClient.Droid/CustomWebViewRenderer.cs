@@ -32,10 +32,10 @@ namespace ElearningClient.Droid
                 Control.Settings.JavaScriptEnabled = true;
                 //Control.Settings.BuiltInZoomControls = true;
                 Control.SetInitialScale(162);
-                string url = string.Format("file:///android_asset/odfviewer/index.html#/sdcard/Android/test.pdf");
+                //string url = string.Format("file:///android_asset/odfviewer/index.html#/sdcard/Android/test.pdf");
                 //string url = string.Format("file:///sdcard/Android/pdfjs/web/viewer.html?file=/sdcard/Android/test.pdf");
+                string url = string.Format("file:///android_asset/pdfjs/web/viewer.html?file=/sdcard/Android/test.pdf#zoom=page-fit");
 
-                string targetfile = "file://" + Android.OS.Environment.DataDirectory.Path;
                 Control.LoadUrl(url);
                 //Control.EvaluateJavascript("pagesCount()", new JavaScriptHandller());
                 //customWebView.Eval("pdfViewProgress(150)");

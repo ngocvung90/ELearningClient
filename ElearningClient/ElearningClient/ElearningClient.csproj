@@ -87,7 +87,6 @@
   <ItemGroup>
     <None Include="GettingStarted.Xamarin" />
     <None Include="packages.config" />
-    <None Include="pdfviewer\data.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
@@ -141,14 +140,6 @@
     <Content Include="ImageResource\playx64.png" />
     <AndroidResource Include="ImageResource\prevx64.png" />
     <AndroidResource Include="ImageResource\settingsx64.png" />
-    <Content Include="Lib\XLabs.Forms.dll" />
-    <Content Include="pdfviewer\compatibility.js" />
-    <Content Include="pdfviewer\customview.js" />
-    <EmbeddedResource Include="pdfviewer\index.html" />
-    <Content Include="pdfviewer\minimal.css" />
-    <Content Include="pdfviewer\pdf.js" />
-    <Content Include="pdfviewer\pdf.worker.js" />
-    <Content Include="pdfviewer\pdffile.js" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="View\PlayerBar.xaml">

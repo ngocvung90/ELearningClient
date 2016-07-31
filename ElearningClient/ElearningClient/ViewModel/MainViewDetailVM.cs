@@ -55,5 +55,13 @@ namespace ElearningClient.ViewModel
         {
             _view.GetPdfWebView().Eval("goPrevious()");
         }
+
+        public void DoPlayAction()
+        {
+            for(int i = 1; i < 10; i ++)
+            {
+                if(i % 2 != 0) _view.GetPdfWebView().Eval("goPrevious(" + i.ToString() + ")");
+            }
+        }
     }
 }
