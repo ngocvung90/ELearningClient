@@ -22,7 +22,7 @@ namespace ElearningClient.View
         }
         void OnimgNextTapped(object sender, EventArgs e)
         {
-            ViewModelHost.AfxGetViewModelHost().GetDetailViewModel().DoNextAction();
+            ViewModelHost.AfxGetViewModelHost().GetDetailViewModel().DoPlayAction();
         }
     }
 }
