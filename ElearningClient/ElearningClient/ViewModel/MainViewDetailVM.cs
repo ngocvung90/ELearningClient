@@ -1,20 +1,35 @@
-﻿using ElearningClient.View;
+﻿using AdvancedTimer.Forms.Plugin.Abstractions;
+using ElearningClient.Model;
+using ElearningClient.View;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
+using Xamarin.Forms;
 
 namespace ElearningClient.ViewModel
 {
     public class MainViewDetailVM:ViewModelBase
     {
-        MainViewDetail _view;
-
+        static MainViewDetail _view;
+        static ClassRoom classRoom;
         public MainViewDetailVM(MainViewDetail view)
         {
             _view = view;
+            timer = DependencyService.Get<IAdvancedTimer>();
+            //var assembly = typeof(App).GetTypeInfo().Assembly;
+            //Stream stream = assembly.GetManifestResourceStream("ElearningClient.testText.txt");
+
+            //var serializer = new XmlSerializer(typeof(ClassRoom));
+            //var questionData = serializer.Deserialize(stream);
         }
+
+        static IAdvancedTimer timer;
+
         private RelayCommand _webAction;
         private RelayCommand _onimgPrevTapped;
         private RelayCommand _onimgNextTapped;
@@ -58,10 +73,15 @@ namespace ElearningClient.ViewModel
 
         public void DoPlayAction()
         {
-            for(int i = 1; i < 10; i ++)
+            timer.initTimer(1000, timerElapsed, false);
+            timer.startTimer();
+        }
+        public static void timerElapsed(object o, EventArgs e)
+        {
+            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
             {
-                if(i % 2 != 0) _view.GetPdfWebView().Eval("goPrevious(" + i.ToString() + ")");
-            }
+                _view.GetPdfWebView().Eval("goToPage(1)");
+            });
         }
     }
 }
