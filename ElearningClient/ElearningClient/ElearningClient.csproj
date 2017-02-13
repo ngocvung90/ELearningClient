@@ -128,6 +128,7 @@
     <Content Include="pdfTeaching.xml" />
     <Content Include="testText.txt" />
     <Content Include="ViewModel\pdfTeaching.xml" />
+    <Content Include="View\testText.txt" />
     <EmbeddedResource Include="ImageResource\delete.png" />
     <EmbeddedResource Include="ImageResource\download.png" />
     <EmbeddedResource Include="ImageResource\icon_big.png" />

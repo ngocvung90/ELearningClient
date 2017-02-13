@@ -18,7 +18,11 @@ namespace ElearningClient.View
             InitializeComponent();
            
             BindingContext = ViewModelHost.AfxGetViewModelHost().GetDetailViewModel(this); ;
-           // pdfWebView.Source = LoadHTMLFileFromResource();
+            // Load the HTML file embedded as a resource in the PCL
+            var assembly = typeof(MainViewDetail).GetTypeInfo().Assembly;
+            var stream = assembly.GetManifestResourceStream("ElearningClient.View.testText.txt");
+            int b = 1;
+            // pdfWebView.Source = LoadHTMLFileFromResource();
         }
 
         public WebView GetPdfWebView()
