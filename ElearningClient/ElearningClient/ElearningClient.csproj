@@ -38,6 +38,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Interface\IAudio.cs" />
     <Compile Include="Model\ClassRoom.cs" />
     <Compile Include="ViewModel\MainViewDetailVM.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />

@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using Xamarin.Forms;
+using ElearningClient.Interface;
 
 namespace ElearningClient.ViewModel
 {
@@ -17,6 +18,7 @@ namespace ElearningClient.ViewModel
     {
         static MainViewDetail _view;
         static ClassRoom classRoom;
+        static int currentPage = 0;
         public MainViewDetailVM(MainViewDetail view)
         {
             _view = view;
@@ -31,8 +33,6 @@ namespace ElearningClient.ViewModel
         static IAdvancedTimer timer;
 
         private RelayCommand _webAction;
-        private RelayCommand _onimgPrevTapped;
-        private RelayCommand _onimgNextTapped;
         public RelayCommand WebAction
         {
             get
@@ -46,17 +46,6 @@ namespace ElearningClient.ViewModel
                 OnPropertyChanged("WebAction");
             }
         }
-        //public RelayCommand OnimgNextTapped
-        //{
-        //    get { if (_onimgNextTapped == null) _onimgNextTapped = new RelayCommand(DoNextAction); return _onimgNextTapped; }
-        //    set { _onimgNextTapped = value; OnPropertyChanged("OnimgNextTapped"); }
-        //}
-
-        //public RelayCommand OnimgPrevTapped
-        //{
-        //    get { if (_onimgPrevTapped == null) _onimgPrevTapped = new RelayCommand(DoPrevAction); return _onimgPrevTapped; }
-        //    set { _onimgPrevTapped = value; OnPropertyChanged("OnimgPrevTapped"); }
-        //}
 
         void DoWebAction()
         {
@@ -73,14 +62,18 @@ namespace ElearningClient.ViewModel
 
         public void DoPlayAction()
         {
-            timer.initTimer(1000, timerElapsed, false);
+            DependencyService.Get<IAudio>().PlayAudioFile("count.mp3");
+
+            timer.initTimer(1000, timerElapsed, true);
             timer.startTimer();
         }
         public static void timerElapsed(object o, EventArgs e)
         {
+            currentPage++;
             Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
             {
-                _view.GetPdfWebView().Eval("goToPage(1)");
+                string goToPage = String.Format("goToPage({0})", currentPage);
+                _view.GetPdfWebView().Eval(goToPage);
             });
         }
     }

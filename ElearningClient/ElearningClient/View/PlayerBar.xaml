@@ -35,7 +35,13 @@
             </Image.GestureRecognizers>
         </Image>
         <Frame  Padding="1, 1, 1, 1" BackgroundColor="#AA00FF"/>
-        <Image x:Name="imgPlay" Source="playx64.png" ></Image> 
+        <Image x:Name="imgPlay" Source="playx64.png" >
+          <Image.GestureRecognizers>
+            <TapGestureRecognizer
+               Tapped="OnimgPlayTapped"
+               NumberOfTapsRequired="1" />
+          </Image.GestureRecognizers>
+        </Image> 
         <Frame   Padding="1, 1, 1, 1" BackgroundColor="#AA00FF"/>
         <Image x:Name="imgNext" Source="nextx64.png" >
           <Image.GestureRecognizers>
