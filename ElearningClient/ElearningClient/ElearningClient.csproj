@@ -48,6 +48,9 @@
     <Compile Include="ViewModel\ViewModelHost.cs" />
     <Compile Include="View\AppStyle.cs" />
     <Compile Include="View\CustomWebView.cs" />
+    <Compile Include="View\HandWrtingPage.xaml.cs">
+      <DependentUpon>HandWrtingPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
@@ -101,7 +104,6 @@
     <None Include="GettingStarted.Xamarin" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="View\MainView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -135,9 +137,7 @@
   <ItemGroup>
     <Content Include="Model\pdfTeaching.xml" />
     <Content Include="pdfTeaching.xml" />
-    <Content Include="testText.txt" />
     <Content Include="ViewModel\pdfTeaching.xml" />
-    <Content Include="View\testText.txt" />
     <EmbeddedResource Include="ImageResource\delete.png" />
     <EmbeddedResource Include="ImageResource\download.png" />
     <EmbeddedResource Include="ImageResource\icon_big.png" />
@@ -159,6 +159,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="View\PlayerBar.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="View\HandWrtingPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

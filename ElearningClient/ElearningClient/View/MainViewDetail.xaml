@@ -10,6 +10,7 @@
       <RowDefinition Height="60"/>
     </Grid.RowDefinitions>
     <local:CustomWebView x:Name ="pdfWebView" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" BackgroundColor="Purple" />
+    <local:HandWrtingPage x:Name ="handWritingView" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" BackgroundColor="Purple" />
     <local:PlayerBar x:Name="playerBar" Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
   </Grid>
 </ContentPage>

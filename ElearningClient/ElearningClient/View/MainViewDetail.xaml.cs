@@ -21,6 +21,8 @@ namespace ElearningClient.View
             // Load the HTML file embedded as a resource in the PCL
             var assembly = typeof(MainViewDetail).GetTypeInfo().Assembly;
             var stream = assembly.GetManifestResourceStream("ElearningClient.View.testText.txt");
+            pdfWebView.IsVisible = false;
+            handWritingView.IsVisible = true;
             int b = 1;
             // pdfWebView.Source = LoadHTMLFileFromResource();
         }

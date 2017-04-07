@@ -3,5 +3,6 @@
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
     <SelectedDevice>Samsung SM-G935F</SelectedDevice>
+    <DefaultDevice>AVD_for_Nexus_9_by_Google</DefaultDevice>
   </PropertyGroup>
 </Project>
