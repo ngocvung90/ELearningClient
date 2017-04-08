@@ -4,6 +4,6 @@
              xmlns:views="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
              x:Class="ElearningClient.View.HandWrtingPage">
     <Grid>
-        <views:SKCanvasView PaintSurface="OnPainting" />
+        <views:SKCanvasView x:Name="handWritingCanvasView" PaintSurface="OnPainting" />
     </Grid>
 </Frame>

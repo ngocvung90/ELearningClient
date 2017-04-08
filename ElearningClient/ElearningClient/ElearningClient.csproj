@@ -39,7 +39,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Interface\IAudio.cs" />
+    <Compile Include="Interface\ITextService.cs" />
     <Compile Include="Model\ClassRoom.cs" />
+    <Compile Include="Model\HandWritingData.cs" />
     <Compile Include="ViewModel\MainViewDetailVM.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
@@ -135,6 +137,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="HandWritingData.xml" />
     <Content Include="Model\pdfTeaching.xml" />
     <Content Include="pdfTeaching.xml" />
     <Content Include="ViewModel\pdfTeaching.xml" />

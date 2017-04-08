@@ -23,13 +23,17 @@ namespace ElearningClient.View
             var stream = assembly.GetManifestResourceStream("ElearningClient.View.testText.txt");
             pdfWebView.IsVisible = false;
             handWritingView.IsVisible = true;
-            int b = 1;
             // pdfWebView.Source = LoadHTMLFileFromResource();
         }
 
         public WebView GetPdfWebView()
         {
             return pdfWebView;
+        }
+
+        public HandWrtingPage GetHandWritingView()
+        {
+            return handWritingView;
         }
         private HtmlWebViewSource LoadHTMLFileFromResource()
         {
