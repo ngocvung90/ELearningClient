@@ -131,16 +131,49 @@ namespace ElearningClient.ViewModel
                 HandWritingDataDOWN downPoint = (HandWritingDataDOWN)item;
                 SKPoint point = new SKPoint((float)downPoint.x, (float)downPoint.y);
                 _view.GetHandWritingView().SetFromPoint(point);
-                System.Diagnostics.Debug.WriteLine("Item : {0}, Point({1}, {2})", strItem,  point.X, point.Y);
+                System.Diagnostics.Debug.WriteLine("Item : {0}, Point({1}, {2})", strItem, point.X, point.Y);
+
+                //find number of stroke, time of drawing path to determine the time interval
+                //number of stroke : from DOWN -> UP
+                for (int i = currentStrokeIndex; i < handWritingData.Items.Length; i ++)
+                {
+                    if(handWritingData.Items[i].ToString().Contains("UP"))
+                    {
+                        HandWritingDataUP upPoint = (HandWritingDataUP)handWritingData.Items[i];
+                        int timeOfPath = (int)upPoint.time;
+                        int numberOfStroke = i - currentStrokeIndex + 1;
+                        System.Diagnostics.Debug.WriteLine("Start new path, Number of stroke : {0}, Time of path : {1}", numberOfStroke, timeOfPath);
+                        if (numberOfStroke > timeOfPath)
+                        {
+                            handWritingTimer.setInterval(100);
+                            System.Diagnostics.Debug.WriteLine("Hand writing too fast, set timer interval 100ms");
+                        }
+                        else
+                        {
+                            int newTimeInterVal = timeOfPath / numberOfStroke;
+                            handWritingTimer.setInterval(newTimeInterVal);
+                            System.Diagnostics.Debug.WriteLine("New handwriting timer interval {0} ms", newTimeInterVal);
+                        }
+                        break;
+                    }
+                }
             }
             else if(strItem.Contains("MOVE"))//set to, need to draw
             {
                 HandWritingDataMOVE movePoint = (HandWritingDataMOVE)item;
                 SKPoint point = new SKPoint((float)movePoint.x, (float)movePoint.y);
-                _view.GetHandWritingView().SetToPoint(new SKPoint((float)movePoint.x, (float)movePoint.y));
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                {
+                    _view.GetHandWritingView().SetToPoint(new SKPoint((float)movePoint.x, (float)movePoint.y));
+                });
                 System.Diagnostics.Debug.WriteLine("Item : {0}, Point({1}, {2})", strItem, point.X, point.Y);
             }
-            _view.GetHandWritingView().SetNeedDisplay();
+            else if(strItem.Contains("UP"))
+            {
+                HandWritingDataUP upPoint = (HandWritingDataUP)item;
+                SKPoint point = new SKPoint((float)upPoint.x, (float)upPoint.y);
+                System.Diagnostics.Debug.WriteLine("Item : {0}, Point({1}, {2})", strItem, point.X, point.Y);
+            }
             currentStrokeIndex++;
         }
     }

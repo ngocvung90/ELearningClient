@@ -19,8 +19,8 @@ namespace ElearningClient.View
         public HandWrtingPage()
         {
             InitializeComponent();
-            currentFrom = new SKPoint(160, 60);
-            currentTo = new SKPoint(240, 140);
+            currentFrom = new SKPoint(0, 0);
+            currentTo = new SKPoint(0, 0);
         }
         private void OnPainting(object sender, SKPaintSurfaceEventArgs e)
         {
@@ -60,14 +60,12 @@ namespace ElearningClient.View
         public void SetFromPoint(SKPoint from)
         {
             currentFrom = from;
+            currentTo = from;
         }
         public void SetToPoint(SKPoint to)
         {
             currentFrom = currentTo;
             currentTo = to;
-        }
-        public void SetNeedDisplay()
-        {
             handWritingCanvasView.InvalidateSurface();
         }
     }

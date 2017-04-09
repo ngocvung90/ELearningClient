@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 namespace ElearningClient.Model
 {
 
-
     /// <remarks/>
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
     [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
@@ -118,6 +117,8 @@ namespace ElearningClient.Model
 
         private decimal yField;
 
+        private ushort timeField;
+
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public decimal x
@@ -145,8 +146,21 @@ namespace ElearningClient.Model
                 this.yField = value;
             }
         }
-    }
 
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public ushort time
+        {
+            get
+            {
+                return this.timeField;
+            }
+            set
+            {
+                this.timeField = value;
+            }
+        }
+    }
 
 
 }

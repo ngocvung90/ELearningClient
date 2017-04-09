@@ -2,7 +2,7 @@
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectView>ProjectFiles</ProjectView>
-    <SelectedDevice>AVD_for_Nexus_9_by_Google</SelectedDevice>
+    <SelectedDevice>Samsung SM-G935F</SelectedDevice>
     <DefaultDevice>AVD_for_Nexus_9_by_Google</DefaultDevice>
   </PropertyGroup>
 </Project>
