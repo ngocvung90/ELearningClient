@@ -42,6 +42,7 @@
     <Compile Include="Interface\ITextService.cs" />
     <Compile Include="Model\ClassRoom.cs" />
     <Compile Include="Model\HandWritingData.cs" />
+    <Compile Include="Model\lectureModel.cs" />
     <Compile Include="ViewModel\MainViewDetailVM.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="View\HandWrtingPage.xaml.cs">
       <DependentUpon>HandWrtingPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ListViewCode.cs" />
     <Compile Include="View\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>

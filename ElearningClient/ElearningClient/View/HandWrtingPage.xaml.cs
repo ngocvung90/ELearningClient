@@ -16,6 +16,7 @@ namespace ElearningClient.View
     public partial class HandWrtingPage : Frame
     {
         SKPoint currentFrom, currentTo;
+        Queue<SKPoint> qFrom, qTo;
         public HandWrtingPage()
         {
             InitializeComponent();
@@ -42,19 +43,12 @@ namespace ElearningClient.View
 
             // create a path
             var path = new SKPath();
-            path.MoveTo(currentFrom);
-            path.LineTo(currentTo);
+            path.MoveTo(qFrom.Dequeue());
+            path.LineTo(qTo.Dequeue());
 
             System.Diagnostics.Debug.WriteLine("Draw Path from({0}, {1}) to ({2}, {3})", currentFrom.X, currentFrom.Y, currentTo.X, currentTo.Y);
             // draw the path
             canvas.DrawPath(path, pathStroke);
-        }
-
-        public void DrawLine(SKPoint from, SKPoint to)
-        {
-            currentFrom = from;
-            currentTo = to;
-            handWritingCanvasView.InvalidateSurface();
         }
 
         public void SetFromPoint(SKPoint from)
@@ -66,6 +60,8 @@ namespace ElearningClient.View
         {
             currentFrom = currentTo;
             currentTo = to;
+            qFrom.Enqueue(currentFrom);
+            qTo.Enqueue(currentTo);
             handWritingCanvasView.InvalidateSurface();
         }
     }

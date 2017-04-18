@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+﻿<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ElearningClient.View"
              x:Class="ElearningClient.View.MainView">
@@ -7,6 +6,6 @@
     <local:MainViewMaster/>
   </MasterDetailPage.Master>
   <MasterDetailPage.Detail>
-    <local:MainViewDetail/>
+    <local:ListViewCode/>
   </MasterDetailPage.Detail>
 </MasterDetailPage>
