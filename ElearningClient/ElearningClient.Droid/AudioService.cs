@@ -30,12 +30,12 @@ namespace ElearningClient.Droid
             {
                 player = new MediaPlayer();
             }
-            var fd = global::Android.App.Application.Context.Assets.OpenFd(fileName);
+            player.Reset();
             player.Prepared += (s, e) =>
             {
                 player.Start();
             };
-            player.SetDataSource(fd.FileDescriptor, fd.StartOffset, fd.Length);
+            player.SetDataSource(fileName);
             player.Prepare();
         }
         public void Pause()

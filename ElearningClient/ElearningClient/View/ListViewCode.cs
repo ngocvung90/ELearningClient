@@ -11,13 +11,14 @@ namespace ElearningClient.View
 		public ListViewCode ()
 		{
 			veggies = new ObservableCollection<lectureModel> ();
-			ListView lstView = new ListView ();
-			lstView.ItemsSource = veggies;
+			ListView lstLectureView = new ListView ();
+			lstLectureView.ItemsSource = veggies;
+            lstLectureView.ItemSelected += LstLectureView_ItemSelected;
 			//TODO - uncomment the region for the built-in cell type you'd like to see
 			#region textCell
-			lstView.ItemTemplate = new DataTemplate (typeof(TextCell));
-			lstView.ItemTemplate.SetBinding (TextCell.TextProperty, "name");
-			lstView.ItemTemplate.SetBinding (TextCell.DetailProperty, "comment");
+			lstLectureView.ItemTemplate = new DataTemplate (typeof(TextCell));
+			lstLectureView.ItemTemplate.SetBinding (TextCell.TextProperty, "name");
+			lstLectureView.ItemTemplate.SetBinding (TextCell.DetailProperty, "comment");
 			#endregion
 
 			/*#region imageCell
@@ -38,13 +39,27 @@ namespace ElearningClient.View
 			lstView.ItemTemplate.SetBinding(EntryCell.LabelProperty, "name");
 			lstView.ItemTemplate.SetBinding(EntryCell.TextProperty, "comment");
 			#endregion*/
-			Content = lstView;
-			veggies.Add (new lectureModel() { name = "tomato", comment = "actually a fruit", isReallyAVeggie = false, image="tomato.png" });
-			veggies.Add (new lectureModel() { name = "pizza", comment = "no comment", isReallyAVeggie = false, image="pizza.png" });
-			veggies.Add (new lectureModel() { name = "romaine lettuce", comment = "good in salads", isReallyAVeggie = true, image="lettuce.png" });
-			veggies.Add (new lectureModel() { name = "zucchini", comment = "grows relatively easily", isReallyAVeggie = true, image="zucchini.png" });
+			Content = lstLectureView;
+			veggies.Add (new lectureModel() { name = "Math", comment = "Add with number less than 10", isReallyAVeggie = false, image="tomato.png" });
+			veggies.Add (new lectureModel() { name = "English", comment = "Simple present", isReallyAVeggie = false, image="pizza.png" });
+			veggies.Add (new lectureModel() { name = "Math", comment = "Multiply with 2", isReallyAVeggie = true, image="lettuce.png" });
+			veggies.Add (new lectureModel() { name = "Sience", comment = "Temperature introduction", isReallyAVeggie = true, image="zucchini.png" });
 		}
-	}
+
+        private void LstLectureView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e != null)
+            {
+                lectureModel lecture = (lectureModel)(e.SelectedItem);
+                MainViewDetail viewDetail = new MainViewDetail();
+                if (lecture.name == "Math")
+                    viewDetail.SetLecture(LECTURE_TYPE.HAND_WRITING);
+                else
+                    viewDetail.SetLecture(LECTURE_TYPE.DOCUMENT_VIEW);
+                this.Navigation.PushAsync(viewDetail);
+            }
+        }
+    }
 }
 
 

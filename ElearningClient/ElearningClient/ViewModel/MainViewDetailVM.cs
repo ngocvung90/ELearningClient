@@ -26,13 +26,12 @@ namespace ElearningClient.ViewModel
         #region Hand Writing variables
         static HandWritingData handWritingData;
         static int currentStrokeIndex = 0;
+        static int handWritingTimeLapsed = 0;
         static IAdvancedTimer handWritingTimer;
         #endregion
         public MainViewDetailVM(MainViewDetail view)
         {
-            _view = view;
-            //timer = DependencyService.Get<IAdvancedTimer>();
-            handWritingTimer = DependencyService.Get<IAdvancedTimer>();
+
             string strPDFLecture = "", strHandWritingLecture = "";
             try
             {
@@ -45,7 +44,7 @@ namespace ElearningClient.ViewModel
                 #endregion
 
                 #region Deserialize hand writing lecture
-                READ_TEXT_ERRORCODE errHandWriting = DependencyService.Get<ITextService>().LoadText("/sdcard/Android/HandWritingData.xml", out strHandWritingLecture);
+                READ_TEXT_ERRORCODE errHandWriting = DependencyService.Get<ITextService>().LoadText("/sdcard/Elearning/data.xml", out strHandWritingLecture);
 
                 var serializerHand = new XmlSerializer(typeof(HandWritingData), new XmlRootAttribute("HandWritingData"));
                 using (TextReader reader = new StringReader(strHandWritingLecture))
@@ -59,6 +58,14 @@ namespace ElearningClient.ViewModel
             }
         }
 
+        public void SetMainViewDetail(MainViewDetail view)
+        {
+            _view = view;
+            if (_view._type == LECTURE_TYPE.DOCUMENT_VIEW)
+                timer = DependencyService.Get<IAdvancedTimer>();
+            else if (_view._type == LECTURE_TYPE.HAND_WRITING)
+                handWritingTimer = DependencyService.Get<IAdvancedTimer>();
+        }
 
         private RelayCommand _webAction;
         public RelayCommand WebAction
@@ -90,13 +97,18 @@ namespace ElearningClient.ViewModel
 
         public void DoPlayAction()
         {
-            DependencyService.Get<IAudio>().PlayAudioFile("count.mp3");
+            DependencyService.Get<IAudio>().PlayAudioFile("/sdcard/Elearning/audio.3gp");
 
-            //timer.initTimer(1000, timerElapsed, true);
-            //timer.startTimer();
-
-            handWritingTimer.initTimer(300, handWritingTimerElapsed, true);
-            handWritingTimer.startTimer();
+            if(_view._type == LECTURE_TYPE.DOCUMENT_VIEW)
+            {
+                timer.initTimer(1000, timerElapsed, true);
+                timer.startTimer();
+            }
+            else if (_view._type == LECTURE_TYPE.HAND_WRITING)
+            {
+                handWritingTimer.initTimer(10, handWritingTimerElapsed, true);
+                handWritingTimer.startTimer();
+            }
         }
         public static void timerElapsed(object o, EventArgs e)
         {
@@ -125,10 +137,20 @@ namespace ElearningClient.ViewModel
             object item = handWritingData.Items[currentStrokeIndex];
             string strItem = item.ToString();
 
-
             if (strItem.Contains("DOWN"))//set from, no need to draw
             {
                 HandWritingDataDOWN downPoint = (HandWritingDataDOWN)item;
+                if(currentStrokeIndex == 0)//first drawing --> need to wait to time down then render
+                {
+                    int startDownTime = (int)downPoint.time;
+                    if(handWritingTimeLapsed < startDownTime)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Waiting for writing time : {0}/{1}", handWritingTimeLapsed, startDownTime);
+                        handWritingTimeLapsed += handWritingTimer.getInterval();
+                        return;
+                    }
+                }
+
                 SKPoint point = new SKPoint((float)downPoint.x, (float)downPoint.y);
                 _view.GetHandWritingView().SetFromPoint(point);
                 System.Diagnostics.Debug.WriteLine("Item : {0}, Point({1}, {2})", strItem, point.X, point.Y);
@@ -173,6 +195,21 @@ namespace ElearningClient.ViewModel
                 HandWritingDataUP upPoint = (HandWritingDataUP)item;
                 SKPoint point = new SKPoint((float)upPoint.x, (float)upPoint.y);
                 System.Diagnostics.Debug.WriteLine("Item : {0}, Point({1}, {2})", strItem, point.X, point.Y);
+
+                //find number of stroke, time of drawing path to determine the time interval
+                //number of stroke : from DOWN -> UP
+                for (int i = currentStrokeIndex; i < handWritingData.Items.Length; i++)
+                {
+                    if (handWritingData.Items[i].ToString().Contains("DOWN"))
+                    {
+                        HandWritingDataDOWN nextDownPoint = (HandWritingDataDOWN)handWritingData.Items[i];
+                        int timeOfRest = (int)nextDownPoint.time;
+                        handWritingTimer.setInterval(timeOfRest);
+                        System.Diagnostics.Debug.WriteLine("Rest from UP to DOWN, New handwriting timer interval {0} ms", timeOfRest);
+                        break;
+                    }
+                }
+
             }
             currentStrokeIndex++;
         }

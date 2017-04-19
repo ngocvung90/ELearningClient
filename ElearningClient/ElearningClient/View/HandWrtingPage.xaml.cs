@@ -22,6 +22,11 @@ namespace ElearningClient.View
             InitializeComponent();
             currentFrom = new SKPoint(0, 0);
             currentTo = new SKPoint(0, 0);
+            qFrom = new Queue<SKPoint>();
+            qTo = new Queue<SKPoint>();
+
+            qFrom.Enqueue(currentFrom);
+            qTo.Enqueue(currentTo);
         }
         private void OnPainting(object sender, SKPaintSurfaceEventArgs e)
         {
@@ -41,14 +46,17 @@ namespace ElearningClient.View
                 StrokeWidth = 5
             };
 
-            // create a path
-            var path = new SKPath();
-            path.MoveTo(qFrom.Dequeue());
-            path.LineTo(qTo.Dequeue());
+            if(qFrom != null && qFrom.Count > 0 && qTo != null && qTo.Count > 0)
+            {
+                // create a path
+                var path = new SKPath();
+                path.MoveTo(qFrom.Dequeue());
+                path.LineTo(qTo.Dequeue());
 
-            System.Diagnostics.Debug.WriteLine("Draw Path from({0}, {1}) to ({2}, {3})", currentFrom.X, currentFrom.Y, currentTo.X, currentTo.Y);
-            // draw the path
-            canvas.DrawPath(path, pathStroke);
+                System.Diagnostics.Debug.WriteLine("Draw Path from({0}, {1}) to ({2}, {3})", currentFrom.X, currentFrom.Y, currentTo.X, currentTo.Y);
+                // draw the path
+                canvas.DrawPath(path, pathStroke);
+            }
         }
 
         public void SetFromPoint(SKPoint from)

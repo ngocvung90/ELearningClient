@@ -41,6 +41,8 @@ namespace ElearningClient.Model
 
         private decimal yField;
 
+        private decimal timeField;
+
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public decimal x
@@ -66,6 +68,20 @@ namespace ElearningClient.Model
             set
             {
                 this.yField = value;
+            }
+        }
+
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public decimal time
+        {
+            get
+            {
+                return this.timeField;
+            }
+            set
+            {
+                this.timeField = value;
             }
         }
     }
@@ -117,7 +133,7 @@ namespace ElearningClient.Model
 
         private decimal yField;
 
-        private ushort timeField;
+        private decimal timeField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -149,7 +165,7 @@ namespace ElearningClient.Model
 
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public ushort time
+        public decimal time
         {
             get
             {
@@ -161,6 +177,7 @@ namespace ElearningClient.Model
             }
         }
     }
+
 
 
 }

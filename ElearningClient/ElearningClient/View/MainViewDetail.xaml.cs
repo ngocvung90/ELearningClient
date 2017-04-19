@@ -11,22 +11,44 @@ using Xamarin.Forms;
 
 namespace ElearningClient.View
 {
+    public enum LECTURE_TYPE
+    {
+        HAND_WRITING = 0,
+        DOCUMENT_VIEW
+    }
     public partial class MainViewDetail : ContentPage
     {
+        public LECTURE_TYPE _type;
         public MainViewDetail()
         {
             InitializeComponent();
            
             BindingContext = ViewModelHost.AfxGetViewModelHost().GetDetailViewModel(this); ;
-            // Load the HTML file embedded as a resource in the PCL
-            var assembly = typeof(MainViewDetail).GetTypeInfo().Assembly;
-            var stream = assembly.GetManifestResourceStream("ElearningClient.View.testText.txt");
             pdfWebView.IsVisible = false;
             handWritingView.IsVisible = true;
-            // pdfWebView.Source = LoadHTMLFileFromResource();
         }
 
-        public WebView GetPdfWebView()
+        public void SetLecture(LECTURE_TYPE type)
+        {
+            _type = type;
+            switch (type)
+            {
+                case LECTURE_TYPE.HAND_WRITING:
+                    pdfWebView.IsVisible = false;
+                    handWritingView.IsVisible = true;
+                    break;
+                case LECTURE_TYPE.DOCUMENT_VIEW:
+                    pdfWebView.IsVisible = true;
+                    handWritingView.IsVisible = false;
+                    break;
+                default:
+                    break;
+            }
+
+            ViewModelHost.AfxGetViewModelHost().GetDetailViewModel().SetMainViewDetail(this);
+
+        }
+    public WebView GetPdfWebView()
         {
             return pdfWebView;
         }
