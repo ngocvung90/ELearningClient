@@ -19,52 +19,60 @@ namespace ElearningClient.ViewModel
     {
         static MainViewDetail _view;
         #region  PDF lecture variables
-        static ClassRoom classRoom;
+        static ClassRoom classRoom = null;
         static int currentStep = 0, timeLapped = 0;
         static IAdvancedTimer timer;
         #endregion
         #region Hand Writing variables
-        static HandWritingData handWritingData;
+        static HandWritingData handWritingData = null;
         static int currentStrokeIndex = 0;
         static int handWritingTimeLapsed = 0;
-        static IAdvancedTimer handWritingTimer;
         #endregion
         public MainViewDetailVM(MainViewDetail view)
         {
-
-            string strPDFLecture = "", strHandWritingLecture = "";
-            try
-            {
-                #region Deserialize pdf lecture
-                READ_TEXT_ERRORCODE err = DependencyService.Get<ITextService>().LoadText("/sdcard/Android/pdfTeaching.xml", out strPDFLecture);
-
-                var serializer = new XmlSerializer(typeof(ClassRoom));
-                using (TextReader reader = new StringReader(strPDFLecture))
-                    classRoom = (ClassRoom)serializer.Deserialize(reader);
-                #endregion
-
-                #region Deserialize hand writing lecture
-                READ_TEXT_ERRORCODE errHandWriting = DependencyService.Get<ITextService>().LoadText("/sdcard/Elearning/data.xml", out strHandWritingLecture);
-
-                var serializerHand = new XmlSerializer(typeof(HandWritingData), new XmlRootAttribute("HandWritingData"));
-                using (TextReader reader = new StringReader(strHandWritingLecture))
-                    handWritingData = (HandWritingData)serializerHand.Deserialize(reader); 
-                #endregion
-            }
-            catch (Exception ex)
-            {
-                string strError = ex.ToString();
-                int b = 1;
-            }
         }
 
         public void SetMainViewDetail(MainViewDetail view)
         {
             _view = view;
-            if (_view._type == LECTURE_TYPE.DOCUMENT_VIEW)
-                timer = DependencyService.Get<IAdvancedTimer>();
-            else if (_view._type == LECTURE_TYPE.HAND_WRITING)
-                handWritingTimer = DependencyService.Get<IAdvancedTimer>();
+            string strPDFLecture = "", strHandWritingLecture = "";
+            try
+            {
+                if (_view._lecture.lectureType == LECTURE_TYPE.DOCUMENT_VIEW)
+                {
+                    if(timer == null)
+                    {
+                        timer = DependencyService.Get<IAdvancedTimer>();
+                        timer.initTimer(1000, timerElapsed, true);
+                    }
+                    #region Deserialize pdf lecture
+                    READ_TEXT_ERRORCODE err = DependencyService.Get<ITextService>().LoadText(_view._lecture.documentPath, out strPDFLecture);
+                    var serializer = new XmlSerializer(typeof(ClassRoom));
+                    using (TextReader reader = new StringReader(strPDFLecture))
+                        classRoom = (ClassRoom)serializer.Deserialize(reader);
+                    #endregion
+                }
+                else if (_view._lecture.lectureType == LECTURE_TYPE.HAND_WRITING)
+                {
+                    if(timer == null)
+                    {
+                        timer = DependencyService.Get<IAdvancedTimer>();
+                        timer.initTimer(10, timerElapsed, true);
+                    }
+                    #region Deserialize hand writing lecture
+                    READ_TEXT_ERRORCODE errHandWriting = DependencyService.Get<ITextService>().LoadText(_view._lecture.documentPath, out strHandWritingLecture);
+
+                    var serializerHand = new XmlSerializer(typeof(HandWritingData), new XmlRootAttribute("HandWritingData"));
+                    using (TextReader reader = new StringReader(strHandWritingLecture))
+                        handWritingData = (HandWritingData)serializerHand.Deserialize(reader);
+                    #endregion
+                }
+
+            }
+            catch (Exception ex)
+            {
+                string strError = ex.ToString();
+            }
         }
 
         private RelayCommand _webAction;
@@ -97,41 +105,53 @@ namespace ElearningClient.ViewModel
 
         public void DoPlayAction()
         {
-            DependencyService.Get<IAudio>().PlayAudioFile("/sdcard/Elearning/audio.3gp");
+            DependencyService.Get<IAudio>().PlayAudioFile(_view._lecture.audioPath);
 
-            if(_view._type == LECTURE_TYPE.DOCUMENT_VIEW)
+            if(_view._lecture.lectureType == LECTURE_TYPE.DOCUMENT_VIEW)
             {
-                timer.initTimer(1000, timerElapsed, true);
+                timeLapped = 0;
+                currentStep = 0;
+                timer.setInterval(1000);
                 timer.startTimer();
             }
-            else if (_view._type == LECTURE_TYPE.HAND_WRITING)
+            else if (_view._lecture.lectureType == LECTURE_TYPE.HAND_WRITING)
             {
-                handWritingTimer.initTimer(10, handWritingTimerElapsed, true);
-                handWritingTimer.startTimer();
+                currentStrokeIndex = 0;
+                handWritingTimeLapsed = 0;
+                timer.setInterval(10);
+                timer.startTimer();
             }
+        }
+
+        public void StopLecture()
+        {
+            if (timer != null) timer.stopTimer();
+            DependencyService.Get<IAudio>().Stop();
         }
         public static void timerElapsed(object o, EventArgs e)
         {
-            timeLapped++;
-            ClassRoomDetail detail = classRoom.LectureDetail[currentStep];
-
-            System.Diagnostics.Debug.WriteLine("Lecture (Document : {0} , Time : {1}, Page : {2}", detail.Document, detail.Time, detail.Page);
-            System.Diagnostics.Debug.WriteLine("Timer lapped : {0}", timeLapped);
-
-            if (detail.Time == (byte)timeLapped)
+            #region Document View rendering
+            if (_view._lecture.lectureType == LECTURE_TYPE.DOCUMENT_VIEW)
             {
-                int currentPage = detail.Page;
-                currentStep++;
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-                {
-                    string goToPage = String.Format("goToPage({0})", currentPage);
-                    _view.GetPdfWebView().Eval(goToPage);
-                });
-            }
-        }
+                timeLapped++;
+                ClassRoomDetail detail = classRoom.LectureDetail[currentStep];
 
-        public static void handWritingTimerElapsed(object o, EventArgs e)
-        {
+                System.Diagnostics.Debug.WriteLine("Lecture (Document : {0} , Time : {1}, Page : {2}", detail.Document, detail.Time, detail.Page);
+                System.Diagnostics.Debug.WriteLine("Timer lapped : {0}", timeLapped);
+
+                if (detail.Time == (byte)timeLapped)
+                {
+                    int currentPage = detail.Page;
+                    currentStep++;
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                    {
+                        string goToPage = String.Format("goToPage({0})", currentPage);
+                        _view.GetPdfWebView().Eval(goToPage);
+                    });
+                }
+            }
+            #endregion
+            #region Handwriting rendering
             if (currentStrokeIndex >= handWritingData.Items.Length) return;
 
             object item = handWritingData.Items[currentStrokeIndex];
@@ -140,13 +160,13 @@ namespace ElearningClient.ViewModel
             if (strItem.Contains("DOWN"))//set from, no need to draw
             {
                 HandWritingDataDOWN downPoint = (HandWritingDataDOWN)item;
-                if(currentStrokeIndex == 0)//first drawing --> need to wait to time down then render
+                if (currentStrokeIndex == 0)//first drawing --> need to wait to time down then render
                 {
                     int startDownTime = (int)downPoint.time;
-                    if(handWritingTimeLapsed < startDownTime)
+                    if (handWritingTimeLapsed < startDownTime)
                     {
                         System.Diagnostics.Debug.WriteLine("Waiting for writing time : {0}/{1}", handWritingTimeLapsed, startDownTime);
-                        handWritingTimeLapsed += handWritingTimer.getInterval();
+                        handWritingTimeLapsed += timer.getInterval();
                         return;
                     }
                 }
@@ -157,9 +177,9 @@ namespace ElearningClient.ViewModel
 
                 //find number of stroke, time of drawing path to determine the time interval
                 //number of stroke : from DOWN -> UP
-                for (int i = currentStrokeIndex; i < handWritingData.Items.Length; i ++)
+                for (int i = currentStrokeIndex; i < handWritingData.Items.Length; i++)
                 {
-                    if(handWritingData.Items[i].ToString().Contains("UP"))
+                    if (handWritingData.Items[i].ToString().Contains("UP"))
                     {
                         HandWritingDataUP upPoint = (HandWritingDataUP)handWritingData.Items[i];
                         int timeOfPath = (int)upPoint.time;
@@ -167,20 +187,20 @@ namespace ElearningClient.ViewModel
                         System.Diagnostics.Debug.WriteLine("Start new path, Number of stroke : {0}, Time of path : {1}", numberOfStroke, timeOfPath);
                         if (numberOfStroke > timeOfPath)
                         {
-                            handWritingTimer.setInterval(100);
+                            timer.setInterval(100);
                             System.Diagnostics.Debug.WriteLine("Hand writing too fast, set timer interval 100ms");
                         }
                         else
                         {
                             int newTimeInterVal = timeOfPath / numberOfStroke;
-                            handWritingTimer.setInterval(newTimeInterVal);
+                            timer.setInterval(newTimeInterVal);
                             System.Diagnostics.Debug.WriteLine("New handwriting timer interval {0} ms", newTimeInterVal);
                         }
                         break;
                     }
                 }
             }
-            else if(strItem.Contains("MOVE"))//set to, need to draw
+            else if (strItem.Contains("MOVE"))//set to, need to draw
             {
                 HandWritingDataMOVE movePoint = (HandWritingDataMOVE)item;
                 SKPoint point = new SKPoint((float)movePoint.x, (float)movePoint.y);
@@ -190,7 +210,7 @@ namespace ElearningClient.ViewModel
                 });
                 System.Diagnostics.Debug.WriteLine("Item : {0}, Point({1}, {2})", strItem, point.X, point.Y);
             }
-            else if(strItem.Contains("UP"))
+            else if (strItem.Contains("UP"))
             {
                 HandWritingDataUP upPoint = (HandWritingDataUP)item;
                 SKPoint point = new SKPoint((float)upPoint.x, (float)upPoint.y);
@@ -204,7 +224,7 @@ namespace ElearningClient.ViewModel
                     {
                         HandWritingDataDOWN nextDownPoint = (HandWritingDataDOWN)handWritingData.Items[i];
                         int timeOfRest = (int)nextDownPoint.time;
-                        handWritingTimer.setInterval(timeOfRest);
+                        timer.setInterval(timeOfRest);
                         System.Diagnostics.Debug.WriteLine("Rest from UP to DOWN, New handwriting timer interval {0} ms", timeOfRest);
                         break;
                     }
@@ -212,6 +232,7 @@ namespace ElearningClient.ViewModel
 
             }
             currentStrokeIndex++;
+            #endregion
         }
     }
 }

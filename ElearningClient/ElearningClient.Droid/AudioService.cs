@@ -49,7 +49,6 @@ namespace ElearningClient.Droid
         public void Stop()
         {
             player.Stop();
-            player.Release();
         }
     }
 }

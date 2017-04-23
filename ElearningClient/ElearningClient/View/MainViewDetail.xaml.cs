@@ -1,4 +1,5 @@
-﻿using ElearningClient.ViewModel;
+﻿using ElearningClient.Model;
+using ElearningClient.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,14 +12,9 @@ using Xamarin.Forms;
 
 namespace ElearningClient.View
 {
-    public enum LECTURE_TYPE
-    {
-        HAND_WRITING = 0,
-        DOCUMENT_VIEW
-    }
     public partial class MainViewDetail : ContentPage
     {
-        public LECTURE_TYPE _type;
+        public lectureModel _lecture;
         public MainViewDetail()
         {
             InitializeComponent();
@@ -28,10 +24,10 @@ namespace ElearningClient.View
             handWritingView.IsVisible = true;
         }
 
-        public void SetLecture(LECTURE_TYPE type)
+        public void SetLecture(lectureModel lecture)
         {
-            _type = type;
-            switch (type)
+            _lecture = lecture;
+            switch (_lecture.lectureType)
             {
                 case LECTURE_TYPE.HAND_WRITING:
                     pdfWebView.IsVisible = false;
@@ -79,6 +75,20 @@ var resourcePrefix = "ElearningClient.pdfviewer.WinPhone.";
                 source.Html = reader.ReadToEnd();
             }
             return source;
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            Device.BeginInvokeOnMainThread(async () => 
+            {
+                bool res = await DisplayAlert("Exit", "Are you sure ?", "Yes", "No");
+                if (res)
+                {
+                    ViewModelHost.AfxGetViewModelHost().GetDetailViewModel().StopLecture();
+                    await this.Navigation.PopAsync();
+                }
+            });
+            return true;
         }
     }
 }
