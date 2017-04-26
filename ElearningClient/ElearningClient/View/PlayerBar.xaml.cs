@@ -22,7 +22,8 @@ namespace ElearningClient.View
         }
         void OnimgNextTapped(object sender, EventArgs e)
         {
-            ViewModelHost.AfxGetViewModelHost().GetDetailViewModel().DoNextAction();
+            Navigation.PushModalAsync(new QuickTestView(ViewModelHost.AfxGetViewModelHost().GetDetailViewModel().GetMainView()));
+            //ViewModelHost.AfxGetViewModelHost().GetDetailViewModel().DoNextAction();
         }
         void OnimgPlayTapped(object sender, EventArgs e)
         {

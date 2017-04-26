@@ -32,6 +32,10 @@ namespace ElearningClient.ViewModel
         {
         }
 
+        public MainViewDetail GetMainView()
+        {
+            return _view;
+        }
         public void SetMainViewDetail(MainViewDetail view)
         {
             _view = view;
@@ -98,6 +102,11 @@ namespace ElearningClient.ViewModel
         {
             _view.GetPdfWebView().Eval("goNext()");
         }
+
+        public void DoTestAction()
+        {
+        }
+
         public void DoPrevAction()
         {
             _view.GetPdfWebView().Eval("goPrevious()");

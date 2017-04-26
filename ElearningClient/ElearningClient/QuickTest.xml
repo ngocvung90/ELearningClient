@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickTest>
+	<Information>
+		<Lecture>Math</Lecture>
+		<TestTime>300</TestTime>
+		<NumberQuestion>5</NumberQuestion>
+	</Information>
+	<Detail>
+		<Quiz>
+			<ID>1</ID>
+			<Content>Quick add : 123 + 327 = ?</Content>
+			<Ans>
+				<A>1291</A>
+				<A>380</A>
+				<A>450</A>
+				<A>490</A>
+				<Correct>450</Correct>
+			</Ans>
+		</Quiz>
+		<Quiz>
+			<ID>2</ID>
+			<Content>Quick add : 19 + 381 = ?</Content>
+			<Ans>
+				<A>23</A>
+				<A>456</A>
+				<A>400</A>
+				<A>490</A>
+				<Correct>400</Correct>
+			</Ans>
+		</Quiz>
+		<Quiz>
+			<ID>3</ID>
+			<Content>Quick Calculate : 1 + 1 x 2 = ?</Content>
+			<Ans>
+				<A>5</A>
+				<A>4</A>
+				<A>3</A>
+				<A>6</A>
+				<Correct>3</Correct>
+			</Ans>
+		</Quiz>
+		<Quiz>
+			<ID>4</ID>
+			<Content>Quick add : 23 + 97 = ?</Content>
+			<Ans>
+				<A>120</A>
+				<A>230</A>
+				<A>130</A>
+				<A>342</A>
+				<Correct>120</Correct>
+			</Ans>
+		</Quiz>
+		<Quiz>
+			<ID>5</ID>
+			<Content>Quick Calculate : (15 + 8) x 2 = ?</Content>
+			<Ans>
+				<A>56</A>
+				<A>46</A>
+				<A>36</A>
+				<A>78</A>
+				<Correct>36</Correct>
+			</Ans>
+		</Quiz>
+	</Detail>
+</QuickTest>

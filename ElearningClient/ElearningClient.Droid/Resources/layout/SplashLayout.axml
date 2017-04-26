@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:layout_gravity="center"
+    android:gravity="center">
+    <ImageView
+        android:src="@drawable/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView1"
+        android:layout_gravity="center"
+         />
+  <TextView
+    android:text="Elearning Client"
+    android:textStyle="bold"
+    android:textSize="44sp"
+    android:textColor="#005bed"
+    android:shadowColor="#00342c"
+    android:shadowDx="4"
+    android:shadowDy="6"
+    android:shadowRadius="2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="bottom"
+    android:id="@+id/mCNLabel" />
+    <ImageView
+        android:id="@+id/animated_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@anim/loadinganimation" />
+</LinearLayout>
