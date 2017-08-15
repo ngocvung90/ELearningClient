@@ -1,11 +1,13 @@
 ﻿using ElearningClient.Model;
 using ElearningClient.ViewModel;
+using Sockets.Plugin;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
@@ -15,13 +17,36 @@ namespace ElearningClient.View
     public partial class MainViewDetail : ContentPage
     {
         public lectureModel _lecture;
+        #region TCPClient socket variables
+        private CancellationTokenSource _canceller;
+        private readonly TcpSocketClient _client;
+        string ipServer = "192.168.0.101";
+        int portServer = 8080;
+        #endregion
         public MainViewDetail()
         {
             InitializeComponent();
-           
+
             BindingContext = ViewModelHost.AfxGetViewModelHost().GetDetailViewModel(this); ;
             pdfWebView.IsVisible = false;
             handWritingView.IsVisible = true;
+
+            _client = new TcpSocketClient();
+            ConnectAndWait();
+        }
+
+        async void ConnectAndWait()
+        {
+            await _client.ConnectAsync(ipServer, portServer);
+            _canceller = new CancellationTokenSource();
+
+            Task.Factory.StartNew(() =>
+            {
+                foreach (var msg in _client.ReadStrings(_canceller.Token))
+                {
+                    //log here
+                }
+            }, TaskCreationOptions.LongRunning);
         }
 
         public void SetLecture(lectureModel lecture)
@@ -44,7 +69,7 @@ namespace ElearningClient.View
             ViewModelHost.AfxGetViewModelHost().GetDetailViewModel().SetMainViewDetail(this);
 
         }
-    public WebView GetPdfWebView()
+        public WebView GetPdfWebView()
         {
             return pdfWebView;
         }
@@ -79,7 +104,7 @@ var resourcePrefix = "ElearningClient.pdfviewer.WinPhone.";
 
         protected override bool OnBackButtonPressed()
         {
-            Device.BeginInvokeOnMainThread(async () => 
+            Device.BeginInvokeOnMainThread(async () =>
             {
                 bool res = await DisplayAlert("Exit", "Are you sure ?", "Yes", "No");
                 if (res)
