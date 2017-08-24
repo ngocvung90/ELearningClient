@@ -16,7 +16,7 @@ public static class SocketExtensions
     /// <param name="eom"></param>
     /// <param name="eof"></param>
     /// <returns></returns>
-    public static IEnumerable<Message> ReadStrings(this ITcpSocketClient client, CancellationToken cancellationToken, string eom = "<EOM>", string eof = "<EOF>")
+    public static IEnumerable<Message> ReadStrings(this ITcpSocketClient client, CancellationToken cancellationToken, string eom = "EOM", string eof = "EOF")
     {
         var from = String.Format("{0}:{1}", client.RemoteAddress, client.RemotePort);
 
@@ -30,34 +30,33 @@ public static class SocketExtensions
             bytesRec = client.ReadStream.Read(buffer, 0, buffer.Length);
             currData += Encoding.UTF8.GetString(buffer, 0, bytesRec);
             System.Diagnostics.Debug.WriteLine("Received data buffer length : {0}, from {1} : {2}", buffer.Length, from, currData);
-            yield return new Message();
 
-            //// Hit an EOM - we have a full message in currData;
-            //if (currData.IndexOf(eom, StringComparison.Ordinal) > -1)
-            //{
-            //    var msg = new Message
-            //    {
-            //        Text = currData.Substring(0, currData.IndexOf(eom)),
-            //        DetailText = String.Format("<Received from Vung9 {0} at {1}>", from, DateTime.Now.ToString("HH:mm:ss"))
-            //    };
+            // Hit an EOM - we have a full message in currData;
+            if (currData.IndexOf(eom, StringComparison.Ordinal) > -1)
+            {
+                var msg = new Message
+                {
+                    Text = currData.Substring(0, currData.IndexOf(eom)),
+                    DetailText = String.Format("<Received from Vung9 {0} at {1}>", from, DateTime.Now.ToString("HH:mm:ss"))
+                };
 
-            //    yield return msg;
+                yield return msg;
 
-            //    currData = currData.Substring(currData.IndexOf(eom) + eom.Length);
-            //}
+                currData = currData.Substring(currData.IndexOf(eom) + eom.Length);
+            }
 
-            //// Hit an EOF - client is gracefully disconnecting
-            //if (currData.IndexOf(eof, StringComparison.Ordinal) > -1)
-            //{
-            //    var msg = new Message
-            //    {
-            //        DetailText = String.Format("<{0} disconnected at {1}>", from, DateTime.Now.ToString("HH:mm:ss"))
-            //    };
+            // Hit an EOF - client is gracefully disconnecting
+            if (currData != "" && currData.IndexOf(eof, StringComparison.Ordinal) > -1)
+            {
+                var msg = new Message
+                {
+                    DetailText = String.Format("<{0} disconnected at {1}>", from, DateTime.Now.ToString("HH:mm:ss"))
+                };
 
-            //    yield return msg;
+                yield return msg;
 
-            //    gotEof = true;
-            //}
+                //gotEof = true;
+            }
         }
 
         // if we get here, either the stream broke, the cancellation token was cancelled, or the eof message was received
@@ -78,7 +77,7 @@ public static class SocketExtensions
     /// <param name="s"></param>
     /// <param name="eom"></param>
     /// <returns></returns>
-    public async static Task WriteStringAsync(this ITcpSocketClient client, string s, string eom = "<EOM>")
+    public async static Task WriteStringAsync(this ITcpSocketClient client, string s, string eom = "EOM")
     {
         var bytes = (s + eom).ToUTF8Bytes();
 

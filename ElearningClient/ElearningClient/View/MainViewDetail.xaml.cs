@@ -20,7 +20,7 @@ namespace ElearningClient.View
         #region TCPClient socket variables
         private CancellationTokenSource _canceller;
         private readonly TcpSocketClient _client;
-        string ipServer = "192.168.0.101";
+        string ipServer = "192.168.0.102";
         int portServer = 8080;
         #endregion
         public MainViewDetail()
