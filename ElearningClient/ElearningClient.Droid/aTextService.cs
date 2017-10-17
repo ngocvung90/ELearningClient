@@ -20,6 +20,11 @@ namespace ElearningClient.Droid
 {
     public class aTextService : ITextService
     {
+        public string[] GetListFiles(string folderPath)
+        {
+            return Directory.GetFiles(folderPath);
+        }
+
         public bool IsFileExist(string filename)
         {
             return File.Exists(filename);

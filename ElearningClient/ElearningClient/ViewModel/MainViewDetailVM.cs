@@ -172,6 +172,7 @@ namespace ElearningClient.ViewModel
                 if (currentStrokeIndex == 0)//first drawing --> need to wait to time down then render
                 {
                     int startDownTime = (int)downPoint.time;
+                    //handWritingTimeLapsed = startDownTime;
                     if (handWritingTimeLapsed < startDownTime)
                     {
                         System.Diagnostics.Debug.WriteLine("Waiting for writing time : {0}/{1}", handWritingTimeLapsed, startDownTime);
@@ -191,7 +192,7 @@ namespace ElearningClient.ViewModel
                     if (handWritingData.Items[i].ToString().Contains("UP"))
                     {
                         HandWritingDataUP upPoint = (HandWritingDataUP)handWritingData.Items[i];
-                        int timeOfPath = (int)upPoint.time;
+                        int timeOfPath = (int)upPoint.time - (int)downPoint.time;
                         int numberOfStroke = i - currentStrokeIndex + 1;
                         System.Diagnostics.Debug.WriteLine("Start new path, Number of stroke : {0}, Time of path : {1}", numberOfStroke, timeOfPath);
                         if (numberOfStroke > timeOfPath)
@@ -232,7 +233,7 @@ namespace ElearningClient.ViewModel
                     if (handWritingData.Items[i].ToString().Contains("DOWN"))
                     {
                         HandWritingDataDOWN nextDownPoint = (HandWritingDataDOWN)handWritingData.Items[i];
-                        int timeOfRest = (int)nextDownPoint.time;
+                        int timeOfRest = (int)nextDownPoint.time - (int)upPoint.time;
                         timer.setInterval(timeOfRest);
                         System.Diagnostics.Debug.WriteLine("Rest from UP to DOWN, New handwriting timer interval {0} ms", timeOfRest);
                         break;

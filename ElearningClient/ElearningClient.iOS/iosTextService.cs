@@ -15,6 +15,11 @@ namespace ElearningClient.iOS
 {
     public class iosTextService : ITextService
     {
+        public string[] GetListFiles(string folderPath)
+        {
+            return Directory.GetFiles(folderPath);
+        }
+
         public bool IsFileExist(string filename)
         {
             return File.Exists(filename);

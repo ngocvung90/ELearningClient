@@ -20,7 +20,7 @@ namespace ElearningClient.View
         #region TCPClient socket variables
         private CancellationTokenSource _canceller;
         private readonly TcpSocketClient _client;
-        string ipServer = "192.168.0.102";
+        string ipServer = "192.168.0.103";
         int portServer = 8080;
         #endregion
         public MainViewDetail()
@@ -31,8 +31,8 @@ namespace ElearningClient.View
             pdfWebView.IsVisible = false;
             handWritingView.IsVisible = true;
 
-            _client = new TcpSocketClient();
-            ConnectAndWait();
+            //_client = new TcpSocketClient();
+            //ConnectAndWait();
         }
 
         async void ConnectAndWait()

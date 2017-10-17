@@ -17,5 +17,6 @@ namespace ElearningClient.Interface
     {
         READ_TEXT_ERRORCODE LoadText(string fileName, out string result);
         bool IsFileExist(string filename);
+        string[] GetListFiles(string folderPath);
     }
 }

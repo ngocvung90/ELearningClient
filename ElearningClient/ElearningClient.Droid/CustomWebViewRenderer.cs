@@ -34,7 +34,7 @@ namespace ElearningClient.Droid
                 Control.SetInitialScale(162);
                 //string url = string.Format("file:///android_asset/odfviewer/index.html#/sdcard/Android/test.pdf");
                 //string url = string.Format("file:///sdcard/Android/pdfjs/web/viewer.html?file=/sdcard/Android/test.pdf");
-                string url = string.Format("file:///android_asset/pdfjs/web/viewer.html?file=/sdcard/Android/test.pdf#zoom=page-fit");
+                string url = string.Format("file:///android_asset/pdfjs/web/viewer.html?file=/sdcard/Elearning/pdf/test.pdf#zoom=page-fit");
 
                 Control.LoadUrl(url);
                 //Control.EvaluateJavascript("pagesCount()", new JavaScriptHandller());

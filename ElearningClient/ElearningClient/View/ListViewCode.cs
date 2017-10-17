@@ -1,4 +1,5 @@
-﻿using ElearningClient.Model;
+﻿using ElearningClient.Interface;
+using ElearningClient.Model;
 using System;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
@@ -28,22 +29,14 @@ namespace ElearningClient.View
             lstLectureView.ItemTemplate.SetBinding(ImageCell.ImageSourceProperty, "lectureImagePath");
             #endregion
 
-            /*#region switchCell
-			lstView.ItemTemplate = new DataTemplate (typeof(SwitchCell));
-			lstView.ItemTemplate.SetBinding (SwitchCell.TextProperty, "name");
-			lstView.ItemTemplate.SetBinding (SwitchCell.OnProperty, "isReallyAVeggie");
-			#endregion*/
+            //string[] listBaiGiang = DependencyService.Get<ITextService>().GetListFiles("/sdcard/Elearning");
 
-            /*#region entryCell
-			lstView.ItemTemplate = new DataTemplate(typeof(EntryCell));
-			lstView.ItemTemplate.SetBinding(EntryCell.LabelProperty, "name");
-			lstView.ItemTemplate.SetBinding(EntryCell.TextProperty, "comment");
-			#endregion*/
-            Content = lstLectureView;
-			listLectures.Add (new lectureBindingModel( new lectureModel() { lectureName = "Math", lectureComment = "Add with number less than 10", lectureType = LECTURE_TYPE.DOCUMENT_VIEW, audioPath = "/sdcard/Elearning/audio.3gp", documentPath = "/sdcard/Android/pdfTeaching.xml" }));
-			listLectures.Add (new lectureBindingModel(new lectureModel() { lectureName = "English", lectureComment = "Simple present", lectureType = LECTURE_TYPE.HAND_WRITING, audioPath = "/sdcard/Elearning/audio.3gp" , documentPath = "/sdcard/Elearning/data.xml" }));
-			listLectures.Add (new lectureBindingModel(new lectureModel() { lectureName = "Math", lectureComment = "Multiply with 2", lectureType = LECTURE_TYPE.DOCUMENT_VIEW, audioPath = "/sdcard/Elearning/audio.3gp", documentPath = "/sdcard/Android/pdfTeaching.xml" }));
-			listLectures.Add (new lectureBindingModel(new lectureModel() { lectureName = "Sience", lectureComment = "Temperature introduction", lectureType = LECTURE_TYPE.HAND_WRITING, audioPath = "/sdcard/Elearning/audio.3gp" , documentPath = "/sdcard/Elearning/data.xml" }));
+            Content = lstLectureView; 
+
+			listLectures.Add (new lectureBindingModel( new lectureModel() { lectureName = "Math", lectureComment = "Add with number less than 10", lectureType = LECTURE_TYPE.DOCUMENT_VIEW, audioPath = "/sdcard/Elearning/pdf/audio.mp3", documentPath = "/sdcard/Elearning/pdf/data.xml" }));
+			listLectures.Add (new lectureBindingModel(new lectureModel() { lectureName = "English", lectureComment = "Simple present", lectureType = LECTURE_TYPE.HAND_WRITING, audioPath = "/sdcard/Elearning/xml/audio.mp3" , documentPath = "/sdcard/Elearning/xml/data.xml" }));
+			listLectures.Add (new lectureBindingModel(new lectureModel() { lectureName = "Math", lectureComment = "Multiply with 2", lectureType = LECTURE_TYPE.DOCUMENT_VIEW, audioPath = "/sdcard/Elearning/pdf/audio.mp3", documentPath = "/sdcard/Elearning/pdf/data.xml" }));
+			listLectures.Add (new lectureBindingModel(new lectureModel() { lectureName = "Sience", lectureComment = "Temperature introduction", lectureType = LECTURE_TYPE.HAND_WRITING, audioPath = "/sdcard/Elearning/xml/audio.mp3" , documentPath = "/sdcard/Elearning/xml/data.xml" }));
 		}
 
         private void LstLectureView_ItemSelected(object sender, SelectedItemChangedEventArgs e)

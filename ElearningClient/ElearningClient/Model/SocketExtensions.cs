@@ -23,16 +23,17 @@ public static class SocketExtensions
         var currData = "";
         int bytesRec = 0;
         bool gotEof = false;
-
+        bool gotEOM = false;
+            var buffer = new byte[1024];
         while (bytesRec != -1 && !cancellationToken.IsCancellationRequested && !gotEof)
         {
-            var buffer = new byte[1024];
             bytesRec = client.ReadStream.Read(buffer, 0, buffer.Length);
+            if (bytesRec == 0) continue;
             currData += Encoding.UTF8.GetString(buffer, 0, bytesRec);
-            System.Diagnostics.Debug.WriteLine("Received data buffer length : {0}, from {1} : {2}", buffer.Length, from, currData);
 
             // Hit an EOM - we have a full message in currData;
-            if (currData.IndexOf(eom, StringComparison.Ordinal) > -1)
+            int indexEOM = currData.IndexOf(eom);
+            if (currData.IndexOf(eom) > -1)
             {
                 var msg = new Message
                 {
@@ -42,11 +43,15 @@ public static class SocketExtensions
 
                 yield return msg;
 
+                System.Diagnostics.Debug.WriteLine("Received data, , data length : {0} buffer length : {1}, from {2} : {3}", currData, currData.Length, buffer.Length, from);
                 currData = currData.Substring(currData.IndexOf(eom) + eom.Length);
+                currData = "";
+                gotEOM = true;
             }
 
+            int indexEOF = currData.IndexOf(eof);
             // Hit an EOF - client is gracefully disconnecting
-            if (currData != "" && currData.IndexOf(eof, StringComparison.Ordinal) > -1)
+            if (currData != "" && indexEOF > -1)
             {
                 var msg = new Message
                 {
@@ -54,10 +59,13 @@ public static class SocketExtensions
                 };
 
                 yield return msg;
-
+                System.Diagnostics.Debug.WriteLine("Received data 3gp, data : {0}", currData);
+                currData = "";
                 //gotEof = true;
+                gotEOM = false;
             }
         }
+        yield return new Message();
 
         // if we get here, either the stream broke, the cancellation token was cancelled, or the eof message was received
         // time to drop the client.
